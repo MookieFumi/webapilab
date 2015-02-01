@@ -23,6 +23,8 @@ namespace webapilab
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Formatters.Add(new JsonMediaTypeFormatter());
+
+            config.EnableCors();
         }
     }
 }

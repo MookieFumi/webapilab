@@ -8,9 +8,11 @@ using System.Web.Mvc;
 using webapilab.Models;
 using webapilab.Services;
 using webapilab;
+using System.Web.Http.Cors;
 
 namespace webapilab.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]    
     public class MembersController : ApiController
     {
         private IMembersService _membersService;
