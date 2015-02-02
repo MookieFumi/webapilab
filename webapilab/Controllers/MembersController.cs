@@ -1,21 +1,21 @@
-﻿using AutoMapper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
-using webapilab.Models;
-using webapilab.Services;
-using webapilab;
 using System.Web.Http.Cors;
+using AutoMapper;
+using webapilab.entities;
+using webapilab.Models;
+using webapilab.services;
+using webapilab.Services;
 
 namespace webapilab.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]    
     public class MembersController : ApiController
     {
-        private IMembersService _membersService;
+        private readonly IMembersService _membersService;
         public MembersController(IMembersService membersService)
         {
             Mapper.CreateMap<Member, MemberViewModel>();

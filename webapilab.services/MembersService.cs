@@ -1,19 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using webapilab;
+using webapilab.entities;
+using webapilab.Services;
 
-namespace webapilab.Services
+namespace webapilab.services
 {
-    public interface IMembersService
-    {
-        void Add(Member member);
-        Member Get(int memberId);
-        IEnumerable<Member> GetAll();
-        void Update(Member member);
-        void Remove(int memberId);
-    }
-
     public class MembersService : ServiceBase, IMembersService
     {
         public MembersService(DataContext context)

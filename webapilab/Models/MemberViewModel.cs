@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace webapilab.Models
 {
@@ -10,15 +6,5 @@ namespace webapilab.Models
     {
         [Required]
         public int MemberId { get; set; }
-    }
-
-    public class MemberBaseViewModel
-    {
-        [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Surname { get; set; }
-        [Required]
-        public string Departament { get; set; }
     }
 }

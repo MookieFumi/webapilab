@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\MookieFumi\Documents\Visual Studio 2013\Projects\webapilab\webapilab\DataContext.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\temp\webapilab\webapilab.entities\DataContext.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

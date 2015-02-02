@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace webapilab
+namespace webapilab.entities
 {
     using System;
     using System.Data.Entity;

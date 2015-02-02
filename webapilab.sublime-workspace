@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"member",
+				"membersController"
+			],
+			[
+				"mbm",
+				"membersController"
+			],
+			[
 				"fu",
 				"funcion"
 			],
@@ -63,14 +71,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 2030,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -78,6 +78,14 @@
 		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
 			[
 				"pret",
 				"HTMLPrettify: Set Prettify Preferences"
@@ -91,15 +99,7 @@
 				"JSLint"
 			],
 			[
-				"ins",
-				"Package Control: Install Package"
-			],
-			[
 				"instal",
-				"Package Control: Install Package"
-			],
-			[
-				"insta",
 				"Package Control: Install Package"
 			]
 		],
@@ -122,15 +122,13 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/temp/webapilab"
-	],
 	"file_history":
 	[
+		"/C/temp/webapilab/index.html",
+		"/C/temp/webapilab/cardMember.html",
+		"/C/temp/webapilab/webapilab.sublime-project",
 		"/C/temp/ionicApp/www/js/services.js",
 		"/C/temp/ionicApp/www/js/controllers.js",
-		"/C/temp/webapilab/index.html",
 		"/C/temp/ionicApp/www/js/app.js",
 		"/C/temp/ionicApp/www/templates/members/index.html",
 		"/C/temp/ionicApp/www/templates/members/add.html",
@@ -183,6 +181,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"'",
+			"\"",
 			"myApp",
 			"webapi2",
 			"GetA",
@@ -220,11 +220,13 @@
 			"chatboxes"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"\"",
+			"'",
 			"webapilab",
 			"this",
 			"$scope",
@@ -261,40 +263,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2030,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -340,7 +310,7 @@
 	"project": "webapilab.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":

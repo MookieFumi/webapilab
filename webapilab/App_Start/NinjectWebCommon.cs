@@ -1,3 +1,5 @@
+using webapilab.services;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(webapilab.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(webapilab.App_Start.NinjectWebCommon), "Stop")]
 

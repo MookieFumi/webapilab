@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using webapilab;
+﻿using webapilab.entities;
 
 namespace webapilab.Services
 {
@@ -13,8 +9,8 @@ namespace webapilab.Services
 
         protected ServiceBase(DataContext context)
         {
-            this.ConnectionString = context.Database.Connection.ConnectionString;
-            this.Context = context;
+            ConnectionString = context.Database.Connection.ConnectionString;
+            Context = context;
         }
     }
 }

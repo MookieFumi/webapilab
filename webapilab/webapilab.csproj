@@ -49,7 +49,8 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
@@ -147,6 +148,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Views\Members\" />
   </ItemGroup>
   <ItemGroup>
@@ -185,37 +187,14 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
-    <Compile Include="DataContext.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataContext.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataContext.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Member.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\MemberBaseViewModel.cs" />
     <Compile Include="Models\MemberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RestrospectiveType.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Services\MembersService.cs" />
-    <Compile Include="Services\ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\XmlDocument.xml" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -243,23 +222,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="DataContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="DataContext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataContext.edmx</DependentUpon>
-      <LastGenOutput>DataContext.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DataContext.edmx.diagram">
-      <DependentUpon>DataContext.edmx</DependentUpon>
-    </Content>
-    <Content Include="DataContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataContext.edmx</DependentUpon>
-      <LastGenOutput>DataContext.cs</LastGenOutput>
-    </Content>
     <None Include="Properties\PublishProfiles\webapi21668.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -293,6 +255,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\webapilab.entities\webapilab.entities.csproj">
+      <Project>{383332AD-2D4E-47BF-8CA5-7DEA0B600D5E}</Project>
+      <Name>webapilab.entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\webapilab.services\webapilab.services.csproj">
+      <Project>{DB083511-3A65-48FD-B6A4-8C83BD9362B4}</Project>
+      <Name>webapilab.services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
