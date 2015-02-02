@@ -4,7 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="webapi21668_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="webapi21668_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Communities">
+          <Key>
+            <PropertyRef Name="CommunityId" />
+          </Key>
+          <Property Name="CommunityId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Members">
           <Key>
             <PropertyRef Name="MemberId" />
@@ -14,6 +21,14 @@
           <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Departament" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CommunityId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="RestrospectiveTypes">
           <Key>
             <PropertyRef Name="RetrospectiveTypeId" />
@@ -22,12 +37,56 @@
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Order" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Towns">
+          <Key>
+            <PropertyRef Name="TownId" />
+          </Key>
+          <Property Name="TownId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="Latitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Longitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Provinces_Communities">
+          <End Role="Communities" Type="Self.Communities" Multiplicity="1" />
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Communities">
+              <PropertyRef Name="CommunityId" />
+            </Principal>
+            <Dependent Role="Provinces">
+              <PropertyRef Name="CommunityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Towns_Provinces">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="1" />
+          <End Role="Towns" Type="Self.Towns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Towns">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="webapi21668_dbModelStoreContainer">
+          <EntitySet Name="Communities" EntityType="Self.Communities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RestrospectiveTypes" EntityType="Self.RestrospectiveTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Towns" EntityType="Self.Towns" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Provinces_Communities" Association="Self.FK_Provinces_Communities">
+            <End Role="Communities" EntitySet="Communities" />
+            <End Role="Provinces" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Towns_Provinces" Association="Self.FK_Towns_Provinces">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Towns" EntitySet="Towns" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="webapi21668_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -51,7 +110,71 @@
         <EntityContainer Name="DataContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Members" EntityType="Self.Member" />
           <EntitySet Name="RestrospectiveTypes" EntityType="Self.RestrospectiveType" />
+          <EntitySet Name="Communities" EntityType="webapi21668_dbModel.Community" />
+          <EntitySet Name="Provinces" EntityType="webapi21668_dbModel.Province" />
+          <EntitySet Name="Towns" EntityType="webapi21668_dbModel.Town" />
+          <AssociationSet Name="FK_Provinces_Communities" Association="webapi21668_dbModel.FK_Provinces_Communities">
+            <End Role="Community" EntitySet="Communities" />
+            <End Role="Province" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Towns_Provinces" Association="webapi21668_dbModel.FK_Towns_Provinces">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="Town" EntitySet="Towns" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Community">
+          <Key>
+            <PropertyRef Name="CommunityId" />
+          </Key>
+          <Property Name="CommunityId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Provinces" Relationship="webapi21668_dbModel.FK_Provinces_Communities" FromRole="Community" ToRole="Province" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommunityId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Community" Relationship="webapi21668_dbModel.FK_Provinces_Communities" FromRole="Province" ToRole="Community" />
+          <NavigationProperty Name="Towns" Relationship="webapi21668_dbModel.FK_Towns_Provinces" FromRole="Province" ToRole="Town" />
+        </EntityType>
+        <EntityType Name="Town">
+          <Key>
+            <PropertyRef Name="TownId" />
+          </Key>
+          <Property Name="TownId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+          <Property Name="Latitude" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Province" Relationship="webapi21668_dbModel.FK_Towns_Provinces" FromRole="Town" ToRole="Province" />
+        </EntityType>
+        <Association Name="FK_Provinces_Communities">
+          <End Type="webapi21668_dbModel.Community" Role="Community" Multiplicity="1" />
+          <End Type="webapi21668_dbModel.Province" Role="Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="CommunityId" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="CommunityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Towns_Provinces">
+          <End Type="webapi21668_dbModel.Province" Role="Province" Multiplicity="1" />
+          <End Type="webapi21668_dbModel.Town" Role="Town" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Town">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -74,6 +197,34 @@
                 <ScalarProperty Name="RetrospectiveTypeId" ColumnName="RetrospectiveTypeId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Communities">
+            <EntityTypeMapping TypeName="webapi21668_dbModel.Community">
+              <MappingFragment StoreEntitySet="Communities">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="webapi21668_dbModel.Province">
+              <MappingFragment StoreEntitySet="Provinces">
+                <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Towns">
+            <EntityTypeMapping TypeName="webapi21668_dbModel.Town">
+              <MappingFragment StoreEntitySet="Towns">
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TownId" ColumnName="TownId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

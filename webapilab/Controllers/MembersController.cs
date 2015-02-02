@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
 using webapilab.entities;
 using webapilab.Models;
 using webapilab.services;
-using webapilab.Services;
 
 namespace webapilab.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]    
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MembersController : ApiController
     {
         private readonly IMembersService _membersService;
@@ -25,21 +25,16 @@ namespace webapilab.Controllers
             _membersService = membersService;
         }
 
-        // GET api/members
-        /// <summary>
-        /// Get all team members
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerable<MemberViewModel> Get()
+        public async Task<IEnumerable<MemberViewModel>> Get()
         {
-            var members = _membersService.GetAll();            
+            var members = await _membersService.GetAll();
             return Mapper.Map<IEnumerable<Member>, IEnumerable<MemberViewModel>>(members);
         }
 
         // GET api/members/5
-        public IHttpActionResult Get(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
-            var member = _membersService.Get(id);
+            var member = await _membersService.Get(id);
             if (member == null)
             {
                 return NotFound();
@@ -49,20 +44,17 @@ namespace webapilab.Controllers
         }
 
         // POST api/members
-        public HttpResponseMessage Post(MemberBaseViewModel memberViewModel)
+        public async Task<HttpResponseMessage> Post(MemberBaseViewModel memberViewModel)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
                     var member = Mapper.Map<MemberBaseViewModel, Member>(memberViewModel);
-                    _membersService.Add(member);
+                    await _membersService.Add(member);
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
-                else
-                {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "Invalid Model");
-                }
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Invalid Model");
             }
             catch (Exception ex)
             {
@@ -71,13 +63,13 @@ namespace webapilab.Controllers
         }
 
         // PUT api/members/5
-        public HttpResponseMessage Put(MemberViewModel memberViewModel)
+        public async Task<HttpResponseMessage> Put(MemberViewModel memberViewModel)
         {
             try
             {
-                var member = _membersService.Get(memberViewModel.MemberId);
+                var member = await _membersService.Get(memberViewModel.MemberId);
                 Mapper.Map(memberViewModel, member);
-                _membersService.Update(member);
+                await _membersService.Update(member);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -87,11 +79,11 @@ namespace webapilab.Controllers
         }
 
         // DELETE api/members/5
-        public HttpResponseMessage Delete(int id)
+        public async Task<HttpResponseMessage> Delete(int id)
         {
             try
             {
-                _membersService.Remove(id);
+                await _membersService.Remove(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)

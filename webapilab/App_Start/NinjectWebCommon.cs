@@ -1,4 +1,5 @@
 using webapilab.services;
+using webapilab.services.Impl;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(webapilab.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(webapilab.App_Start.NinjectWebCommon), "Stop")]
@@ -65,6 +66,7 @@ namespace webapilab.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IMembersService>().To<MembersService>();
+            kernel.Bind<ITownsService>().To<TownsService>();
         }        
     }
 }

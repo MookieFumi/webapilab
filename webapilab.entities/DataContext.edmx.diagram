@@ -7,6 +7,11 @@
       <Diagram DiagramId="554a5e7e94114589a605dd6ad88cbedd" Name="Diagram1">
         <EntityTypeShape EntityType="webapi21668_dbModel.Member" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="webapi21668_dbModel.RestrospectiveType" Width="1.875" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="webapi21668_dbModel.Community" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="webapi21668_dbModel.Province" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="webapi21668_dbModel.Town" Width="1.5" PointX="5.25" PointY="3.875" />
+        <AssociationConnector Association="webapi21668_dbModel.FK_Provinces_Communities" />
+        <AssociationConnector Association="webapi21668_dbModel.FK_Towns_Provinces" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

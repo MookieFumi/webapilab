@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using webapilab.entities;
 
 namespace webapilab.services
 {
     public interface IMembersService
     {
-        void Add(Member member);
-        Member Get(int memberId);
-        IEnumerable<Member> GetAll();
-        void Update(Member member);
-        void Remove(int memberId);
+        Task Add(Member member);
+        Task<Member> Get(int memberId);
+        Task<IEnumerable<Member>> GetAll();
+        Task Update(Member member);
+        Task Remove(int memberId);
     }
 }

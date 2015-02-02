@@ -27,5 +27,8 @@ namespace webapilab.entities
     
         public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<RestrospectiveType> RestrospectiveTypes { get; set; }
+        public virtual DbSet<Community> Communities { get; set; }
+        public virtual DbSet<Province> Provinces { get; set; }
+        public virtual DbSet<Town> Towns { get; set; }
     }
 }
