@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Formatting;
+﻿using System.Net.Http.Formatting;
 using System.Web.Http;
 
 namespace webapilab
@@ -23,8 +20,6 @@ namespace webapilab
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Formatters.Add(new JsonMediaTypeFormatter());
-
-            config.EnableCors();
         }
     }
 }

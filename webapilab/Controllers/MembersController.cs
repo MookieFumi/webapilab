@@ -4,7 +4,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using AutoMapper;
 using webapilab.entities;
 using webapilab.Models;
@@ -12,7 +11,7 @@ using webapilab.services;
 
 namespace webapilab.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MembersController : ApiController
     {
         private readonly IMembersService _membersService;
