@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapilab.services", "webap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapilab.entities", "webapilab.entities\webapilab.entities.csproj", "{383332AD-2D4E-47BF-8CA5-7DEA0B600D5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapilab.crosscutting", "webapilab.crosscutting\webapilab.crosscutting.csproj", "{C0056589-E90D-4EE6-B840-41045D996AFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{383332AD-2D4E-47BF-8CA5-7DEA0B600D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{383332AD-2D4E-47BF-8CA5-7DEA0B600D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{383332AD-2D4E-47BF-8CA5-7DEA0B600D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0056589-E90D-4EE6-B840-41045D996AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0056589-E90D-4EE6-B840-41045D996AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0056589-E90D-4EE6-B840-41045D996AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0056589-E90D-4EE6-B840-41045D996AFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

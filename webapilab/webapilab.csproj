@@ -246,7 +246,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Infrastructure\AuthContext.cs" />
     <Compile Include="Infrastructure\AuthRepository.cs" />
-    <Compile Include="Infrastructure\ElmahExceptionLogger.cs" />
     <Compile Include="Infrastructure\Provideers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Infrastructure\Startup.cs" />
@@ -321,6 +320,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\webapilab.crosscutting\webapilab.crosscutting.csproj">
+      <Project>{C0056589-E90D-4EE6-B840-41045D996AFB}</Project>
+      <Name>webapilab.crosscutting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\webapilab.entities\webapilab.entities.csproj">
       <Project>{383332AD-2D4E-47BF-8CA5-7DEA0B600D5E}</Project>
       <Name>webapilab.entities</Name>
@@ -348,7 +351,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49283</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49283/</IISUrl>
+          <IISUrl>http://localhost:49284/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

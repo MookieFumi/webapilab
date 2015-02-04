@@ -14,6 +14,7 @@ namespace webapilab.Controllers
     public class MembersController : ApiController
     {
         private readonly IMembersService _membersService;
+
         public MembersController(IMembersService membersService)
         {
             Mapper.CreateMap<Member, MemberViewModel>();

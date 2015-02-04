@@ -10,7 +10,7 @@ namespace webapilab
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            config.Services.Add(typeof(IExceptionLogger), new ElmahExceptionLogger());
+            //config.Services.Add(typeof(IExceptionLogger), new ElmahExceptionLogger());
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Formatters.Add(new JsonMediaTypeFormatter());
 
