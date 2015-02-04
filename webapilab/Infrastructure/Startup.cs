@@ -5,7 +5,6 @@ using System.Web.Http.ExceptionHandling;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Elmah.Contrib.WebApi;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
@@ -28,8 +27,7 @@ namespace webapilab.Infrastructure
             ConfigureOAuth(app);
 
             var config = new HttpConfiguration();
-            config.Services.Add(typeof(IExceptionLogger), new ElmahExceptionLogger());
-
+            
             WebApiConfig.Register(config);
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
