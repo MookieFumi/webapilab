@@ -14,14 +14,14 @@
         <tbody>
             @foreach (ParameterDescription parameter in Model)
             {
-                ModelDescription modelDescription = parameter.TypeDescription;
+                var modelDescription = parameter.TypeDescription;
                 <tr>
                     <td class="parameter-name">@parameter.Name</td>
                     <td class="parameter-documentation">
                         <p>@parameter.Documentation</p>
                     </td>
                     <td class="parameter-type">
-                        @Html.DisplayFor(m => modelDescription.ModelType, "ModelDescriptionLink", new { modelDescription = modelDescription })
+                        @Html.DisplayFor(m => modelDescription.ModelType, "ModelDescriptionLink", new { modelDescription })
                     </td>
                     <td class="parameter-annotations">
                         @if (parameter.Annotations.Count > 0)
