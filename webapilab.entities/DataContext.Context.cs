@@ -30,5 +30,9 @@ namespace webapilab.entities
         public virtual DbSet<Community> Communities { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<OrderLine> OrderLines { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }

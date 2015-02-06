@@ -12,6 +12,13 @@
         <EntityTypeShape EntityType="webapi21668_dbModel.Town" Width="1.5" PointX="5.25" PointY="3.875" />
         <AssociationConnector Association="webapi21668_dbModel.FK_Provinces_Communities" />
         <AssociationConnector Association="webapi21668_dbModel.FK_Towns_Provinces" />
+        <EntityTypeShape EntityType="webapi21668_dbModel.Customer" Width="1.5" PointX="7.375" PointY="1.25" />
+        <EntityTypeShape EntityType="webapi21668_dbModel.OrderLine" Width="1.5" PointX="11.875" PointY="1" />
+        <EntityTypeShape EntityType="webapi21668_dbModel.Order" Width="1.5" PointX="9.625" PointY="1" />
+        <EntityTypeShape EntityType="webapi21668_dbModel.Product" Width="1.5" PointX="9.625" PointY="5.125" />
+        <AssociationConnector Association="webapi21668_dbModel.FK_Orders_Customers" />
+        <AssociationConnector Association="webapi21668_dbModel.FK_OrderLines_Orders" />
+        <AssociationConnector Association="webapi21668_dbModel.FK_OrderLines_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
