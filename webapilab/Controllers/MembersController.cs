@@ -11,10 +11,10 @@ using webapilab.services;
 
 namespace webapilab.Controllers
 {
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MembersController : ApiController
     {
         private readonly IMembersService _membersService;
+
         public MembersController(IMembersService membersService)
         {
             Mapper.CreateMap<Member, MemberViewModel>();
