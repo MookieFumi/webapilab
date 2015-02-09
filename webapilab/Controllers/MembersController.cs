@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using AutoMapper;
 using webapilab.entities;
+using webapilab.Infrastructure;
 using webapilab.Models;
 using webapilab.services;
 

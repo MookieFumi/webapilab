@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using webapilab.crosscutting;
 using webapilab.Models;
 
 namespace webapilab.Infrastructure
@@ -19,12 +20,15 @@ namespace webapilab.Infrastructure
 
         public async Task<IdentityResult> RegisterUser(UserModel userModel)
         {
-            var user = new IdentityUser
+            var userContext = new UserContext()
             {
+                Name = userModel.Name,
+                Surname = userModel.Surname,
+                Email = userModel.EMail,
                 UserName = userModel.UserName
             };
 
-            var result = await _userManager.CreateAsync(user, userModel.Password);
+            var result = await _userManager.CreateAsync(userContext, userModel.Password);
             return result;
         }
 

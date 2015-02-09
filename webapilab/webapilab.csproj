@@ -246,9 +246,30 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Infrastructure\AuthContext.cs" />
     <Compile Include="Infrastructure\AuthRepository.cs" />
-    <Compile Include="Infrastructure\Provideers\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="Infrastructure\Providers\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="Migrations\201502031018556_InitialCreate.cs" />
+    <Compile Include="Migrations\201502031018556_InitialCreate.Designer.cs">
+      <DependentUpon>201502031018556_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502090836471_Extend-User-Properties.cs" />
+    <Compile Include="Migrations\201502090836471_Extend-User-Properties.Designer.cs">
+      <DependentUpon>201502090836471_Extend-User-Properties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502090839247_Review-User-Properties.cs" />
+    <Compile Include="Migrations\201502090839247_Review-User-Properties.Designer.cs">
+      <DependentUpon>201502090839247_Review-User-Properties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502090852305_Add-User-EMail-Property.cs" />
+    <Compile Include="Migrations\201502090852305_Add-User-EMail-Property.Designer.cs">
+      <DependentUpon>201502090852305_Add-User-EMail-Property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502090907221_Delete-User-EMail-Property.cs" />
+    <Compile Include="Migrations\201502090907221_Delete-User-EMail-Property.Designer.cs">
+      <DependentUpon>201502090907221_Delete-User-EMail-Property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Infrastructure\Startup.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\TownsController.cs" />
@@ -332,6 +353,23 @@
       <Project>{DB083511-3A65-48FD-B6A4-8C83BD9362B4}</Project>
       <Name>webapilab.services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201502031018556_InitialCreate.resx">
+      <DependentUpon>201502031018556_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502090836471_Extend-User-Properties.resx">
+      <DependentUpon>201502090836471_Extend-User-Properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502090839247_Review-User-Properties.resx">
+      <DependentUpon>201502090839247_Review-User-Properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502090852305_Add-User-EMail-Property.resx">
+      <DependentUpon>201502090852305_Add-User-EMail-Property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502090907221_Delete-User-EMail-Property.resx">
+      <DependentUpon>201502090907221_Delete-User-EMail-Property.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

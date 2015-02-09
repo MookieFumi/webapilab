@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using webapilab.crosscutting;
 
 namespace webapilab.Infrastructure
 {
@@ -9,7 +10,6 @@ namespace webapilab.Infrastructure
         {   
         }
 
-        //public DbSet<Client> Clients { get; set; }
-        //public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public System.Data.Entity.DbSet<UserContext> UsersContext { get; set; }
     }
 }

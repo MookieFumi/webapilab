@@ -1,24 +1,27 @@
 ﻿using System;
 using System.Reflection;
 using System.Web.Http;
-using System.Web.Http.ExceptionHandling;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Ninject;
 using Ninject.Web.Common.OwinHost;
 using Ninject.Web.WebApi.OwinHost;
 using Owin;
-using webapilab.Infrastructure;
-using webapilab.Infrastructure.Provideers;
+using webapilab;
+using webapilab.entities;
+using webapilab.Infrastructure.Providers;
 using webapilab.services;
 using webapilab.services.Impl;
 
 [assembly: OwinStartup(typeof(Startup))]
-namespace webapilab.Infrastructure
+namespace webapilab
 {
     public class Startup
     {
@@ -27,7 +30,7 @@ namespace webapilab.Infrastructure
             ConfigureOAuth(app);
 
             var config = new HttpConfiguration();
-            
+
             WebApiConfig.Register(config);
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
@@ -55,9 +58,12 @@ namespace webapilab.Infrastructure
                 Provider = new SimpleAuthorizationServerProvider()
             };
 
-            // Token Generation
             app.UseOAuthAuthorizationServer(oAuthServerOptions);
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+            var authenticationOptions = new OAuthBearerAuthenticationOptions()
+            {
+                AuthenticationMode = AuthenticationMode.Active
+            };
+            app.UseOAuthBearerAuthentication(authenticationOptions);
         }
 
         private static StandardKernel CreateKernel()
