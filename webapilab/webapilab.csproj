@@ -247,7 +247,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Infrastructure\Providers\GoogleAuthProvider.cs" />
     <Compile Include="Infrastructure\Providers\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="Models\ExternalLoginViewModel.cs" />
+    <Compile Include="Models\ParsedExternalAccessToken.cs" />
+    <Compile Include="Models\RegisterExternalBindingModel.cs" />
+    <Compile Include="Result\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembersController.cs" />

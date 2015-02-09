@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Ninject;
 using Ninject.Web.Common;
@@ -30,6 +31,9 @@ namespace webapilab
 {
     public class Startup
     {
+        public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
+        public static GoogleOAuth2AuthenticationOptions googleAuthOptions { get; private set; }
+
         public void Configuration(IAppBuilder app)
         {
             ConfigureOAuth(app);
@@ -62,6 +66,15 @@ namespace webapilab
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new SimpleAuthorizationServerProvider()
             };
+
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            googleAuthOptions = new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1037398895413-bl8isjjb8it51g10rhrkdaa7q6a8bo1c.apps.googleusercontent.com",
+                ClientSecret = "uuQI0aECvZJGrYQKD6y0qfXT",
+                Provider = new GoogleAuthProvider()
+            };
+            app.UseGoogleAuthentication(googleAuthOptions);
 
             app.UseOAuthAuthorizationServer(oAuthServerOptions);
             var authenticationOptions = new OAuthBearerAuthenticationOptions()
