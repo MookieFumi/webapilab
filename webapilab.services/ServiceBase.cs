@@ -1,6 +1,6 @@
 ﻿using webapilab.entities;
 
-namespace webapilab.Services
+namespace webapilab.services
 {
     public abstract class ServiceBase
     {

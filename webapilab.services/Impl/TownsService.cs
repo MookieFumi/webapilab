@@ -6,7 +6,6 @@ using webapilab.crosscutting;
 using webapilab.entities;
 using webapilab.entities.Queries.Configuration;
 using webapilab.entities.Queries.Result;
-using webapilab.Services;
 
 namespace webapilab.services.Impl
 {

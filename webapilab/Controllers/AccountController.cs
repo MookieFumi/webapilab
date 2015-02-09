@@ -3,17 +3,18 @@ using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using webapilab.Infrastructure;
 using webapilab.Models;
+using webapilab.services;
 
 namespace webapilab.Controllers
 {
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
-        private readonly AuthRepository _repo = null;
+        private readonly IAuthService _authService = null;
 
-        public AccountController()
+        public AccountController(IAuthService authService)
         {
-            _repo = new AuthRepository();
+            _authService = authService;
         }
 
         // POST api/Account/Register
@@ -26,7 +27,7 @@ namespace webapilab.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = await _repo.RegisterUser(userModel);
+            var result = await _authService.RegisterUser(userModel);
 
             var errorResult = GetErrorResult(result);
 
@@ -42,7 +43,7 @@ namespace webapilab.Controllers
         {
             if (disposing)
             {
-                _repo.Dispose();
+                _authService.Dispose();
             }
 
             base.Dispose(disposing);

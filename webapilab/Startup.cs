@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Reflection;
+using System.Data.Entity;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -11,11 +13,14 @@ using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Ninject;
+using Ninject.Web.Common;
 using Ninject.Web.Common.OwinHost;
 using Ninject.Web.WebApi.OwinHost;
 using Owin;
 using webapilab;
+using webapilab.crosscutting;
 using webapilab.entities;
+using webapilab.Infrastructure;
 using webapilab.Infrastructure.Providers;
 using webapilab.services;
 using webapilab.services.Impl;
@@ -72,6 +77,10 @@ namespace webapilab
             kernel.Load(Assembly.GetExecutingAssembly());
             kernel.Bind<IMembersService>().To<MembersService>();
             kernel.Bind<ITownsService>().To<TownsService>();
+            kernel.Bind<IAuthService>().To<AuthService>();
+
+            kernel.Bind<AuthContext>().To<AuthContext>().InRequestScope().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["AuthContext"].ConnectionString);
+
             return kernel;
         }
     }

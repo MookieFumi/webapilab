@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using webapilab.entities;
-using webapilab.Services;
 
 namespace webapilab.services.Impl
 {

@@ -5,17 +5,17 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using webapilab.crosscutting;
 using webapilab.Models;
 
-namespace webapilab.Infrastructure
+namespace webapilab.services.Impl
 {
-    public class AuthRepository : IDisposable
+    public class AuthService : IAuthService, IDisposable
     {
-        private readonly AuthContext _context;
+        private readonly AuthContext _authContext;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public AuthRepository()
+        public AuthService(AuthContext authContext, UserStore<IdentityUser> userStore)
         {
-            _context = new AuthContext();
-            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_context));
+            _authContext = authContext;
+            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(authContext));
         }
 
         public async Task<IdentityResult> RegisterUser(UserModel userModel)
@@ -40,9 +40,8 @@ namespace webapilab.Infrastructure
 
         public void Dispose()
         {
-            _context.Dispose();
+            _authContext.Dispose();
             _userManager.Dispose();
-
         }
     }
 }
